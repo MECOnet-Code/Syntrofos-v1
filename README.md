@@ -1,2 +1,2 @@
 # Syntrofos-v1-time-domain
-This code for Syntrofos device uses time-domain processing to obtain heart rate and respiratory rate.
+This is a time-domain processing approach to obtain heart rate and respiratory rate for Syntrofos device.
