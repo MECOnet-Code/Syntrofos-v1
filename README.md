@@ -11,7 +11,10 @@ It can monitor three parameters:
 - Respiratory rate
 - Body temperature
 
-If any of these parameters is out of usual range it can point to COVID-19 infection.
+If any of these parameters is out of normal range it can point to COVID-19 infection.
+
+![Syntrofos-1 1](https://github.com/MECOnet-Code/Syntrofos-v1/assets/154332242/68ebc768-dff0-4a0c-833a-de651485bbe1)
+
 ## Interface
 Syntrofos features 3 dual-color LEDs for each monitored signal. The simplest way to indicate that a certain signal is OK is to light it's green LED, red LED will light up otherwise.
 
@@ -21,4 +24,5 @@ LED signaling is divided in two parts:
 
 Additionally, if at least one red LED was lighted - a BLE beacon will turn on to signal an alarm to a remote controller.
 
-Since the project was  built fot Arduino nano, there is also serial communication available for watching live signals and numerical results in serial monitors which can also support logging for detailed analysis if needed.
+Since the project was  built fot Arduino nano, there is also serial communication available for monitoring live signals and numerical results in serial monitors.
+
