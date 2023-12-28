@@ -1,6 +1,6 @@
 # Overview
 
-**Syntrofos 1.1** is a system that utilizes temperature, heart rate (HR), and respiratory rate (RR) sensors to monitor vital signs and provide visual indicators through LEDs.
+**Syntrofos 1.1** is an embedded system designed for time-domain processing, integrating temperature, heart rate (HR), and respiratory rate (RR) sensors. The system employs digital signal processing techniques to analyze sensor data and provides visual feedback through LEDs. This README provides an in-depth understanding of the code's structure, functionality, and key components.
 
 The code was written for Arduino Nano but it can be applied to other processors by editing their timer function.
 
@@ -89,7 +89,7 @@ Since the project was  built fot Arduino nano, there is also serial communicatio
 ## Notes
 
 -   The system performs continuous monitoring and updates LED status every 10 seconds.
--   The LEDs temporarily turn off between status updates to conserve power.
+-   The LEDs blink between status updates to conserve power. For example, while breathing out the green RR LED will blink fast instead of light constantly until signal drops below treshold.
 -   Beacon indicator status reflects abnormal sensor readings.
 
 ## Functions
