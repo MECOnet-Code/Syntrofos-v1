@@ -164,7 +164,7 @@ void printToSerial(float* y_hp_hr, float* y_hp_rr)
   Serial.print(", ");
   Serial.print(*y_hp_rr);;
   Serial.print("\r\n");
-}
+} // printToSerial
 
 
 void comp_match() // Timer
@@ -203,14 +203,14 @@ float calculate_alfa(float fc, float fs) {
   float alfa;
   alfa = (2 * PI * fc / fs) / ((2 * PI * fc / fs) + 1);
   return alfa;
-}
+} // calculate_alfa
 
 //coeficient beta in HP filter
 float calculate_beta(float fc, int fs) {
   float beta;
   beta = 1 / ((2 * PI * fc / (float)fs) + 1);
   return beta;
-}
+} // calculate_beta
 
 
 int32_t ydc_old_hr, ydc_old_rr = 0;
@@ -297,7 +297,7 @@ void ckeckPulseBinHR()
     if (isGoodHsignal == false)                 // irregular pulse is detected because of noise or sensor is detached
       HRpulses = 0;                             // reset temporary counter
   }
-}
+} // ckeckPulseBinHR
 
 void ckeckPulseBinRR()
 {
@@ -313,16 +313,16 @@ void ckeckPulseBinRR()
     if (isGoodRsignal == false)                  // irregular pulse detected because of noise or sensor is detached
       RRpulses = 0;                              // reset temporary counter
   }
-}
+} // ckeckPulseBinRR
 
 int isRisingEdge(uint8_t* x_old, uint8_t* x_new)
 {
-  int y = 0;                        // if not rising edge
-  if ((*x_new) - (*x_old) == 100)   // rising edge: from 100 to 0
+  int y = 0;                        // y = 0 if not rising edge
+  if ((*x_new) - (*x_old) == 100)   // rising edge - from 100 to 0
     y = 1;
   *x_old = *x_new;                  // update old value
   return y;
-}
+} // isRisingEdge
 
 bool checkT(int* x, int a, int b)
 {
@@ -331,13 +331,13 @@ bool checkT(int* x, int a, int b)
     return false;
   else
     return true;
-}
+} // checkT
 
 int findRate(int* x, int* Tstart, int* Tfinal) {
   float y = 1000.0 * (((float)NUM_PULSES * 60.0) / ((float)(*Tfinal - *Tstart) * (float)Ts));
   *x = 0;
   return (int)y;
-}
+} // findRate
 
 
 void beaconPowerLogic(bool alarmSignal, bool beaconStatus, bool beaconPowering)
@@ -362,7 +362,7 @@ void beaconPowerLogic(bool alarmSignal, bool beaconStatus, bool beaconPowering)
     beaconPowering = false;             // beacon is not in process of turning on or off
     beaconStatus = false;               // beacon is off
   }
-}
+} // beaconPowerLogic
 
 
 void LEDsOff()
@@ -373,7 +373,7 @@ void LEDsOff()
   digitalWrite(LEDrr_r, HIGH);
   digitalWrite(LEDhr_gr, HIGH);
   digitalWrite(LEDhr_r, HIGH);
-}
+} // LEDsOff
 
 
 void LEDstatus(int HR, int RR)
