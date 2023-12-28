@@ -19,7 +19,7 @@
 
 const byte fs = 32;       // sampling frequency
 int Ts;                   // sampling period in ms
-const int NUM_PULSES = 4; // number of pulses after rhythm is calculated
+const int NUM_PULSES = 4; // number of pulses after which rhythm is calculated
 int intr_count = 0;       // timer interrupts counter
 bool canSample = false;   // sampling indicator
 
