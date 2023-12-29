@@ -94,7 +94,7 @@ This was the common part for both time and frequency domains. The differences be
 6.  **Serial Output:**
     -   Optionally outputs temperature, HR, RR, and filtered signal values to Serial.
 
-## Notes
+### Notes
 
 -   The system performs continuous monitoring and updates LED status every 10 seconds.
 -   The LEDs blink between status updates to conserve power. For example, while breathing out the green RR LED will blink fast instead of light constantly until signal drops below treshold.
@@ -135,7 +135,13 @@ This was the common part for both time and frequency domains. The differences be
     
 -   A beacon mechanism is integrated to signal out of safe range results or low signal conditions.
 -   Beacon power logic manages the activation and deactivation of the beacon based on signal quality.
-    
+
+### Notes
+
+-   The system performs continuous real-time monitoring and updates LED status based on frequency domain analysis results.
+-   The LEDs exhibit specific patterns, such as rapid blinking or constant lighting, to convey information about the rates of the signals.
+-   Beacon indicator status reflects that one or more parameters are out of healthy range or abnormal sensor readings.
+
 ## **Functions:**
     
 -   **loop:** Continuously processes samples from RR and HR sensors in real-time in the frequency domain.
