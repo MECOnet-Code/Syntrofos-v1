@@ -80,23 +80,23 @@ void setup()
   Tms = (int) (1000 / fs);                 // sampling period
   delay(500);
   comp_match();
-  sei();                                   // re-enable interrupts
+  sei();                          // re-enable interrupts
 } // setup
 
 
-uint8_t D = 25;                             // variable for hysteresis effect when blinking LEDs
-int average_rr, average_hr = 0;             // average signal values
-int sampleRR, sampleHR;                     // sample variables
+uint8_t D = 25;                   // variable for hysteresis effect when blinking LEDs
+int average_rr, average_hr = 0;   // average signal values
+int sampleRR, sampleHR;           // sample variables
 bool alarmSignal = false;                   // if any of 3 monitored signals is out of safe range
 bool beaconStatus, beaconPowering = false;  // false: off, true: on
 int beaconPower_count = 0;                  // to count beacon powering duration
 
 void loop()
 {
-  int sum_rr, sum_hr = 0;                                     // sums to calculate average values
-  int yo_hp_rr, yo_hp_hr;                                     // filter outputs
-  float P_left_rr, P_left_hr, P_rigth_rr, P_right_hr = 0.0;   // left and right spectral components around the maximum
-  float mi_rr, mi_hr = 0.0;                                   // rhythm correction coefficients
+  int sum_rr, sum_hr = 0;   // sums to calculate average values
+  int yo_hp_rr, yo_hp_hr;   // filter outputs
+  float P_left_rr, P_left_hr, P_rigth_rr, P_right_hr = 0.0;  // left and right spectral components around the maximum
+  float mi_rr, mi_hr = 0.0;                                  // rhythm correction coefficients
 
   if (canSample == true)
   {
@@ -188,8 +188,8 @@ void loop()
       sum3_hr += PeakHR;
 
       // calculate bpms based on fft analysis
-      RRR = 60 * ((float(maxiin_rr) * float(fs)) / float(FFT_N));
-      RHR = 60 * ((float(maxiin_hr) * float(fs)) / float(FFT_N));
+      RRR = findRate(maxiin_rr);
+      RHR = findRate(maxiin_hr);
 
       // find left and right amplitudes around peak value
       P_rigth_rr = (float) (int8_t(data_rr[maxiin_rr + 1]) * int8_t(data_rr[maxiin_rr + 1])) + (int8_t(im_rr[maxiin_rr + 1]) * int8_t(im_rr[maxiin_rr + 1]));
@@ -206,7 +206,7 @@ void loop()
       P_left_hr = (float) (int8_t(data_hr[maxiin_hr - 2]) * int8_t(data_hr[maxiin_hr - 2])) + (int8_t(im_rr[maxiin_hr - 2]) * int8_t(im_hr[maxiin_hr - 2]));
       sum3_hr += P_left_hr;
 
-      // result correcting function
+      // result correction
       mi_rr = -(P_rigth_rr - P_left_rr) / ((2.0 * PeakRR) - P_left_rr - P_rigth_rr);
       RRR = RRR - mi_rr;
       mi_hr = -(P_right_hr - P_left_hr) / ((2.0 * PeakHR) - P_left_hr - P_right_hr);
@@ -293,6 +293,11 @@ int calculate_error_hr()
   return errorCode;
 } // calculate_error_hr
 
+float findRate(int8_t index)
+{
+  float rate = 60 * ((float(index) * float(fs)) / float(FFT_N));
+  return rate;
+} // findRate
 
 const int intFaster = 250;
 const int intSlower = 500;
