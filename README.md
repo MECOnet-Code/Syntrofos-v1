@@ -28,7 +28,7 @@ LED signaling is divided in two parts:
 Additionally, if at least one red LED was lighted - a BLE beacon will turn on to signal an alarm to a remote controller.
 
 There is also serial communication available for monitoring live signals and numerical results in serial monitor.
-![syntrofos-v1-graphs](https://github.com/MECOnet-Code/Syntrofos-v1/assets/154332242/c67c445b-91ee-4732-8f8f-eb04a6fd75d8 "Heart and respiratory plot")
+![syntrofos-v1-graphs](https://github.com/MECOnet-Code/Syntrofos-v1/assets/154332242/c67c445b-91ee-4732-8f8f-eb04a6fd75d8 "Heart and respiratory plots")
 
 ## Components
 
@@ -158,4 +158,8 @@ This was the common part for both time and frequency domains. The differences be
 ## **Serial Output:**
 
 -   After each cycle, heart and respiratory spectrums are printed and at the end the results, including breathing rate, heart rate, and temperature are printed for monitoring and debugging.
+
+# Electrical circuit
+
+![Syntrofos, electrical circuit](https://github.com/MECOnet-Code/Syntrofos-v1/assets/154332242/dccae4a2-1cef-4adf-ab99-be56c7d285f5 ("Syntrofos electrical circuit designed in KiCAD"))
 
