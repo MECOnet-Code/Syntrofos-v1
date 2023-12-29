@@ -131,11 +131,6 @@ This was the common part for both time and frequency domains. The differences be
 -   Error codes are generated to classify the quality of the signals.
 -   LED indicators respond to error codes, signaling potential issues in signal strength or reliability.
     
-## **Temperature Monitoring:**
-    
--   Temperature readings are obtained from a sensor and used as an additional health parameter.
--   LEDs indicate whether the temperature is within a normal range or potentially alarming.
-    
 ## **Beacon Functionality:**
     
 -   A beacon mechanism is integrated to signal out of safe range results or low signal conditions.
@@ -143,15 +138,18 @@ This was the common part for both time and frequency domains. The differences be
     
 ## **Functions:**
     
--   Various functions handle specific tasks, such as resetting variables, calculating error codes, managing LED status, and implementing beacon power logic.
--   High-pass filtering functions are used to process RR and HR signals.
-    
-## **Interrupts:**
-    
--   Timer 1 interrupt is utilized for controlling the sampling frequency, ensuring consistent and periodic processing.
+-   **loop:** Continuously processes samples from RR and HR sensors in real-time in the frequency domain.
+-   **high_pass_hr:** Applies a high-pass filter to the HR signal in the frequency domain with a cutoff frequency of 2.5 Hz.
+-   **high_pass_rr:** Applies a high-pass filter to the RR signal in the frequency domain with a cutoff frequency of 0.4 Hz.
+-   **fix_fft:** Utilizes FFT analysis to identify dominant spectral components for both HR and RR signals.
+-   **findRate:** Calculates the breathing rate (RRR) and heart rate (RHR) based on the FFT results in the frequency domain.
+-   **calculate_error_rr, calculate_error_hr:** Produces error codes to classify the quality of the signals and results.
+-   **LEDstatus:** Controls LED indicators to respond to error codes and signal the quality of the frequency components.
+-   **beaconPowerLogic:** Integrates a beacon mechanism to signal out-of-safe-range results or low signal conditions in the frequency domain.
+-   **manageInterrupts:** Utilizes Timer 1 interrupt for controlling the sampling frequency, ensuring consistent and periodic processing in the frequency domain.
+-   **printSerial:** Outputs heart and respiratory spectrums, along with results, including breathing rate, heart rate, and temperature, to Serial for monitoring and debugging in the frequency domain.
     
 ## **Serial Output:**
 
 -   After each cycle, heart and respiratory spectrums are printed and at the end the results, including breathing rate, heart rate, and temperature are printed for monitoring and debugging.
-
 
