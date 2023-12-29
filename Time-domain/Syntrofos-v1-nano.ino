@@ -167,10 +167,11 @@ void printToSerial(float* y_hp_hr, float* y_hp_rr)
 } // printToSerial
 
 
-void comp_match() // Timer
+// Timer 1 function
+void comp_match()
 {
   // Configure Timer 1 interrupt
-  // F_clock = 16e6 Hz, prescaler = 64, Fs = 1000 Hz
+  // F_clock = 16 MHz, prescaler = 64, Fs = 1000 Hz
   TCCR1A = 0;
   TCCR1B = 1 << WGM12 | 0 << CS12 | 1 << CS11 | 1 << CS10;
   TCNT1 = 0;              // reset Timer 1 counter
@@ -184,10 +185,10 @@ void comp_match() // Timer
 ISR (TIMER1_COMPA_vect)
 {
   if (intr_count == Ts && canSample == false) {
-    intr_count = 0;    // making intr_count=0 to continue the process
+    intr_count = 0;    // reset intr_count to continue the process
     canSample = true;
   }
-  else intr_count++;   // incrementing intr_count 1ms
+  else intr_count++;   // increment intr_count each 1ms
 } // ISR
 
 
