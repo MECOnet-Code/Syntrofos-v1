@@ -4,7 +4,7 @@
 
 This README provides an in-depth understanding of the code's structure, functionality, and key components.
 
-For more information, a paper **SYNTROFOS: A Wearable Device for Vital Sign Monitoring, Hardware and Signal Processing Aspects** can be found on [ResearchGate](https://www.researchgate.net/publication/371888548_SYNTROFOS_A_Wearable_Device_for_Vital_Sign_Monitoring_Hardware_and_Signal_Processing_Aspects).
+For more information, a paper **SYNTROFOS: A Wearable Device for Vital Sign Monitoring, Hardware and Signal Processing Aspects** can be accessed on [ResearchGate](https://www.researchgate.net/publication/371888548_SYNTROFOS_A_Wearable_Device_for_Vital_Sign_Monitoring_Hardware_and_Signal_Processing_Aspects).
 
 The general code was written for Arduino Nano but it can be applied to other processors as well by editing their timer function. The ESP32 is only used to detect BLE beacon which acts as an alarm signal and make beep sounds while it is on. Any other BLE device or module can be used instead.
 
