@@ -19,7 +19,7 @@ const int pwmChannel = 0;
 const int resolution = 8;   // 8-bit resolution
 
 // MAC addresses to search
-const String bejkon[3] = {"ac:23:3f:a8:ee:0a", "ac:23:3f:a8:ee:0b", "ac:23:3f:a8:ee:0c"};
+const String MACs[3] = {"ac:23:3f:a8:ee:0a", "ac:23:3f:a8:ee:0b", "ac:23:3f:a8:ee:0c"};
 
 int scanTime = 5;    // in seconds
 BLEScan* pBLEScan;
@@ -32,19 +32,19 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     void onResult(BLEAdvertisedDevice advertisedDevice) {
       a = advertisedDevice.toString().c_str();
       current_millis = millis();
-      if (a.indexOf(bejkon[0]) > 0)
+      if (a.indexOf(MACs[0]) > 0)
       {
         found_millis = millis();
         Serial.println("Pacient A");
         ledcWrite(pwmChannel, 100);
       }
-      else if (a.indexOf(bejkon[1]) > 0)
+      else if (a.indexOf(MACs[1]) > 0)
       {
         found_millis = millis();
         Serial.println("Pacient B");
         ledcWrite(pwmChannel, 100);
       }
-      else if (a.indexOf(bejkon[2]) > 0)
+      else if (a.indexOf(MACs[2]) > 0)
       {
         found_millis = millis();
         Serial.println("Pacient C");
