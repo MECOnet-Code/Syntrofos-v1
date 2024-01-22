@@ -162,7 +162,9 @@ This was the common part for both time and frequency domains. The differences be
 # BLE Detection
 
 This experiment uses battery powered Bluetooth Low Energy Beacon for basic communication in close environments. The extremely simplified decision-making algorithms extract output information to GOOD/BAD levels.
+
 In the case of SYNTROFOS it is DearBeacon E9, manufactured by MINEW, which is additionally equipped with an accelerometer. In the presented configuration, the beacon only serves as a remote altering device. When the decision is BAD the Beacon is on and sends its ID.
+
 For detecting purpose, an ESP32 microcontroller was used which is equipped with in-built BLE module. A simple BLE detection algorithm is implemented which filters available MAC addresses of nearby devices and sounds a beep signal when one of the known addresses is found. Up to 3 beacons were used simultaneously, which correspond to 3 different patients. The receiver in its serial output prints which patients need attention. Receiver code is uploaded [here](https://github.com/MECOnet-Code/Syntrofos-v1/blob/main/Syntrofos-v1.1-esp32.ino)..
 
 # Electrical Circuit
