@@ -165,9 +165,13 @@ This experiment uses battery powered Bluetooth Low Energy Beacon for basic commu
 
 In the case of SYNTROFOS it is DearBeacon E9, manufactured by MINEW, which is additionally equipped with an accelerometer. In the presented configuration, the beacon only serves as a remote altering device. When the decision is BAD the Beacon is on and sends its ID.
 
-For detecting purpose, an ESP32 microcontroller was used which is equipped with in-built BLE module. A simple BLE detection algorithm is implemented which filters available MAC addresses of nearby devices and sounds a beep signal when one of the known addresses is found. Up to 3 beacons were used simultaneously, which correspond to 3 different patients. The receiver in its serial output prints which patients need attention. Receiver code is uploaded [here](https://github.com/MECOnet-Code/Syntrofos-v1/blob/main/Syntrofos-v1.1-esp32.ino)..
+For detecting purpose, an ESP32 microcontroller was used which is equipped with in-built BLE module. A simple BLE detection algorithm is implemented which filters available MAC addresses of nearby devices and sounds a beep signal when one of the known addresses is found. Up to 3 beacons were used simultaneously, which correspond to 3 different patients. The receiver in its serial output prints which patients need attention. Receiver code is uploaded [here](https://github.com/MECOnet-Code/Syntrofos-v1/blob/main/Syntrofos-v1.1-esp32.ino).
 
-# Electrical Circuit
+## BLE detector circuit
+
+![ble-detector](https://github.com/MECOnet-Code/Syntrofos-v1/assets/61829507/c7b0ac39-5f72-470b-993d-03df91bd9974)
+
+# Syntrofos Electrical Circuit
 
 ![Syntrofos, electrical circuit](https://github.com/MECOnet-Code/Syntrofos-v1/assets/154332242/dccae4a2-1cef-4adf-ab99-be56c7d285f5 ("Syntrofos electrical circuit designed in KiCAD"))
 
