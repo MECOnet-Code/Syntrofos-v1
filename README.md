@@ -113,7 +113,7 @@ This was the common part for both time and frequency domains. The differences be
 
 # Frequency domain analysis
 
-## **Main Loop:**
+## Main Loop
     
 -   The `loop` function continuously processes samples from RR and HR sensors in real-time.
 -   Each sample undergoes high-pass filtering to extract relevant signal components. Because FFT analysis is more noise tolerant, low pass filter is omitted for saving memory.
@@ -121,17 +121,17 @@ This was the common part for both time and frequency domains. The differences be
     -   Respiratory Rate (RR): Cutoff frequency (fc) = 0.4 Hz.
 -   LEDs indicate the state of the filtered signals, providing visual feedback.
     
-## **Signal Analysis:**
+## Signal Analysis
     
 -   FFT analysis is employed for frequency domain processing to identify dominant spectral components.
 -   The breathing rate (RRR) and heart rate (RHR) are calculated based on the FFT results.
     
-## **Error Handling:**
+## Error Handling
     
 -   Error codes are generated to classify the quality of the signals.
 -   LED indicators respond to error codes, signaling potential issues in signal strength or reliability.
     
-## **Beacon Functionality:**
+## Beacon Functionality
     
 -   A beacon mechanism is integrated to signal out of safe range results or low signal conditions.
 -   Beacon power logic manages the activation and deactivation of the beacon based on signal quality.
@@ -142,7 +142,7 @@ This was the common part for both time and frequency domains. The differences be
 -   The LEDs exhibit specific patterns, such as rapid blinking or constant lighting, to convey information about the rates of the signals.
 -   Beacon indicator status reflects that one or more parameters are out of healthy range or abnormal sensor readings.
 
-## **Functions:**
+## Functions
     
 -   **loop:** Continuously processes samples from RR and HR sensors in real-time in the frequency domain.
 -   **high_pass_hr:** Applies a high-pass filter to the HR signal in the frequency domain with a cutoff frequency of 2.5 Hz.
@@ -155,11 +155,17 @@ This was the common part for both time and frequency domains. The differences be
 -   **manageInterrupts:** Utilizes Timer 1 interrupt for controlling the sampling frequency, ensuring consistent and periodic processing in the frequency domain.
 -   **printSerial:** Outputs heart and respiratory spectrums, along with results, including breathing rate, heart rate, and temperature, to Serial for monitoring and debugging in the frequency domain.
     
-## **Serial Output:**
+# Serial Output
 
 -   After each cycle, heart and respiratory spectrums are printed and at the end the results, including breathing rate, heart rate, and temperature are printed for monitoring and debugging.
 
-# Electrical circuit
+# BLE Detection
+
+This experiment uses battery powered Bluetooth Low Energy Beacon for basic communication in close environments. The extremely simplified decision-making algorithms extract output information to GOOD/BAD levels.
+In the case of SYNTROFOS it is DearBeacon E9, manufactured by MINEW, which is additionally equipped with an accelerometer. In the presented configuration, the beacon only serves as a remote altering device. When the decision is BAD the Beacon is on and sends its ID.
+For detecting purpose, an ESP32 microcontroller was used which is equipped with in-built BLE module. A simple BLE detection algorithm is implemented which filters available MAC addresses of nearby devices and sounds a beep signal when one of the known addresses is found. Up to 3 beacons were used simultaneously, which correspond to 3 different patients. The receiver in its serial output prints which patients need attention. Receiver code is uploaded [here](https://github.com/MECOnet-Code/Syntrofos-v1/blob/main/Syntrofos-v1.1-esp32.ino)..
+
+# Electrical Circuit
 
 ![Syntrofos, electrical circuit](https://github.com/MECOnet-Code/Syntrofos-v1/assets/154332242/dccae4a2-1cef-4adf-ab99-be56c7d285f5 ("Syntrofos electrical circuit designed in KiCAD"))
 
